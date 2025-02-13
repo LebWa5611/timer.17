@@ -24,34 +24,40 @@ public class UI extends JFrame {
         setLayout(null);
 
         panel.setBounds(0, 350, 600, 100);
-        panel.setLayout(null);
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         panel.setBackground(Color.GRAY);
-        add(panel);
+        add(panel, BorderLayout.SOUTH);
 
-        panel1.setBounds(0, 0, 600, 300);
-        panel1.setBackground(Color.GRAY);
+        panel1.setBounds(0, 0, 600, 500);
+        panel1.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        panel1.setBackground(Color.DARK_GRAY);
         panel1.setLayout(null);
         add(panel1);
 
         label.setFont(new Font("Arial", Font.PLAIN, 70));
-        label.setBounds(100, 125, 100, 100);
+        label.setForeground(Color.WHITE);
+        label.setBounds(100, 125, 120, 100);
         panel1.add(label);
 
         label1.setFont(new Font("Arial",Font.PLAIN,70));
+        label1.setForeground(Color.WHITE);
         label1.setBounds(260, 125, 120, 100);
         panel1.add(label1);
 
         label2.setFont(new Font("Arial",Font.PLAIN,70));
+        label2.setForeground(Color.WHITE);
         label2.setBounds(430, 125, 120, 100);
         panel1.add(label2);
 
         timer.setFont(new Font("Arial",Font.BOLD,70));
+        timer.setForeground(Color.WHITE);
         timer.setLayout(null);
         timer.setBounds(180,-180,getWidth(),getHeight());
         panel1.add(timer);
 
         JButton start = new JButton("Start");
-        start.setBounds(20, 30, 100, 40);
+        start.setFont(new Font("Arial", Font.BOLD, 20));
+        start.setPreferredSize(new Dimension(100, 60));
         start.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
         start.setBackground(Color.WHITE);
         panel.add(start);
@@ -70,23 +76,28 @@ public class UI extends JFrame {
         start.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                if(start.getBackground() == Color.WHITE){
+                if (start.getBackground() == Color.WHITE) {
                     start.setBackground(Color.GREEN);
                 }
             }
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    start.setBackground(Color.WHITE);
+                }
         });
 
         JButton stop = new JButton("Stop");
-        stop.setBounds(400, 30, 100, 40);
+        stop.setFont(new Font("Arial", Font.BOLD, 20));
+        stop.setPreferredSize(new Dimension(100, 60));
         stop.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,3));
         stop.setBackground(Color.WHITE);
         panel.add(stop);
         stop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            if(threadCustom != null) threadCustom.stopThread();
-            if(threadCustom1 != null) threadCustom1.stopThread();
-            if(threadCustom2 != null) threadCustom2.stopThread();
+                if(threadCustom != null) threadCustom.stopThread();
+                if(threadCustom1 != null) threadCustom1.stopThread();
+                if(threadCustom2 != null) threadCustom2.stopThread();
             }
         });
         stop.addMouseListener(new MouseAdapter() {
